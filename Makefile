@@ -1,5 +1,9 @@
 tests:
+	docker-compose -f docker-compose.yml build
 	docker-compose -f docker-compose.yml up --abort-on-container-exit
+
+dev-setup:
+	docker-compose run --rm app make setup
 
 
 test-image:
@@ -8,3 +12,6 @@ test-image:
 
 dev:
 	docker-compose up
+
+ci:
+	docker compose -f docker-compose.yml up --abort-on-container-exit --exit-code-from app
